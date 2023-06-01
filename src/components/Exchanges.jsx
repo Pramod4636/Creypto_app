@@ -4,28 +4,38 @@ import {server} from '../index'
 import { Container } from '@chakra-ui/react';
 import Loader from './Loader'
 import { Heading,Button , HStack , Image , VStack } from '@chakra-ui/react'
+import ErrorComponent from "./ErrorComponent"
+
+
 
 const Exchanges = () => {
     
     const [exchanges,setExchanges] = useState([]);
     const [loading ,setLoading] = useState(true);
-
+    const [error,setError] = useState(false);
     // data is fetched 
     useEffect( ()=>{
         const fetchExchange = async () => {
-            const {data} = await axios.get(`${server}/exchanges?per_page=100`); 
-            console.log(data);
-            setExchanges(data);
-            setLoading(false);
+            try{
+                const {data} = await axios.get(`${server}/exchanges?per_page=100`); 
+                console.log(data);
+                setExchanges(data);
+                setLoading(false);
+            }
+            catch(error){
+                setError(true);
+                setLoading(false);
+            }
         };
         fetchExchange();
+
     } 
    
 
 
     ,[]);
 
-
+  if(error ) return <ErrorComponent message="Error while fetching exchanges "/>
   return (
     <Container maxW = {"container.xl"}>
         {loading ? <Loader/> :  <>
@@ -51,7 +61,12 @@ const Exchanges = () => {
 const ExchangeCard = ({name,img,rank,url})=>
     <>
     <a href={url} target ={"blank"}>
-        <VStack> 
+        <VStack w = {"52"} shadow = {"lg"} p = {"8"} borderRadius={"lg"} transition={"all 0.3s"}
+        m = {"4"}
+        css = {{
+            "&:hover" : { transform : "scale(1.1)"}
+        }}
+        > 
              <Image 
              src ={img} 
              w={"10"} 
