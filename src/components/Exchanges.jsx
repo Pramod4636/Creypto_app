@@ -3,7 +3,7 @@ import axios from 'axios'
 import {server} from '../index'
 import { Container } from '@chakra-ui/react';
 import Loader from './Loader'
-import { Heading,Button , HStack , Image , VStack } from '@chakra-ui/react'
+import { Text ,Heading,Button , HStack , Image , VStack } from '@chakra-ui/react'
 import ErrorComponent from "./ErrorComponent"
 
 
@@ -77,6 +77,9 @@ const ExchangeCard = ({name,img,rank,url})=>
         <Heading size = "md" noofLines ={1} >
             {rank}
         </Heading>
+
+        <Text noofLines = {1}>{name}</Text>
+
         </VStack>
 
     </a>
