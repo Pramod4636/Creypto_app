@@ -20,9 +20,10 @@ const CoinCard = ({id , img,name,symbol,price,currencySymbol = "₹"})=>
         <Heading size = "md" noofLines ={1} >
             {symbol}
         </Heading>
-        </VStack>
+        
         <Text noofLines={1}> {name}</Text>
-        <Text noofLines={1}> { price ? `${currencySymbol}`:"NA" }</Text>
+        <Text noofLines={1}> { price ? `${currencySymbol}${price}`:"NA" }</Text>
+        </VStack>
     </Link>
     
 </>

@@ -15,6 +15,15 @@ const Coins = () => {
     const [error,setError] = useState(false);
     const [page,setPage] = useState(1);
     const [currency,setCurrency] = useState("inr");
+    
+     let currencySymbol = currency=="inr" ? "₹" : currencySymbol=="eur" ? "€ "  : "$"; 
+    
+const changePage = (page) => {
+    setPage(page+1);
+    setLoading(true);
+}
+   const  btns =  new Array(132).fill(1);
+
     // data is fetched 
     useEffect( ()=>{
         const fetchCoins = async () => {
@@ -38,6 +47,9 @@ const Coins = () => {
     ,[currency,page]);
 
   if(error ) return <ErrorComponent message="Error while fetching Coins "/>
+
+
+
   return (
     <Container maxW = {"container.xl"}>
         {loading ? <Loader/> :  <>
@@ -50,12 +62,28 @@ const Coins = () => {
                   name = {i.name}
                   price  ={i.current_price} 
                   img = {i.image} 
-                  rank = {i.trust_score_rank} 
-                  url ={i.url} 
+                  symbol = {i.symbol} 
+                  currencySymbol = {currencySymbol}
                   />
                 ))}
             }
           </HStack>
+
+          
+
+          <HStack w = {"full"} overflowX = {"auto"} p= {"8"}>
+            {
+             btns.map( (item,index) => (
+                <Button 
+                bgColor = {"blackAlpha.900"} 
+                color = {"white"}
+                onClick = {()=>changePage(index+1)} 
+                >
+                {index+1}
+                </Button>
+             ))
+             }
+             </HStack>
         </>
         }
     </Container>
