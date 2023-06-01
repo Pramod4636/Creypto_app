@@ -14,7 +14,7 @@ function App()
         <Routes>
             <Route path="/"  element={<Home />} />
             <Route path="/coins"  element={<Coins />} />
-            <Route path="/exchnages"  element={<Exchanges />} />
+            <Route path="/exchanges"  element={<Exchanges />} />
             <Route path="/coin/:id"  element={<CoinDetails />} />
             
         </Routes>
