@@ -1,8 +1,19 @@
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
+
 import React from 'react'
 
-const App = ()=>
+function App()
 {
-    return ( <h2> welcomde</h2>)
+    return ( 
+      <Router>
+        <Routes>
+            <Route/>
+        </Routes>
+      </Router>
+    
+    );
+
+
 }
 
 
