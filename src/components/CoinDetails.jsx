@@ -242,3 +242,4 @@ const Item = ({title,value}) =>(
   </HStack>
 ) 
 export default CoinDetails
+// abc 
