@@ -5,7 +5,7 @@ import { Container } from '@chakra-ui/react';
 import Loader from './Loader'
 import { Text ,Heading,Button , HStack , Image , VStack } from '@chakra-ui/react'
 import ErrorComponent from "./ErrorComponent"
-
+import Footer from "./Footer"
 
 
 const Exchanges = () => {
@@ -54,6 +54,7 @@ const Exchanges = () => {
           </HStack>
         </>
         }
+        <Footer></Footer>
     </Container>
   );
 }
